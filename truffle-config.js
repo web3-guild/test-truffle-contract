@@ -5,37 +5,28 @@ module.exports = {
   // see <http://truffleframework.com/docs/advanced/configuration>
   // for more details on how to specify configuration options!
   //
-  //networks: {
-  //  development: {
-  //    host: "127.0.0.1",
-  //    port: 7545,
-  //    network_id: "*"
-  //  },
-  //  test: {
-  //    host: "127.0.0.1",
-  //    port: 7545,
-  //    network_id: "*"
-  //  }
-  //},
-  //
-  // Truffle DB is currently disabled by default; to enable it, change enabled:
-  // false to enabled: true. The default storage location can also be
-  // overridden by specifying the adapter settings, as shown in the commented code below.
-  //
-  // NOTE: It is not possible to migrate your contracts to truffle DB and you should
-  // make a backup of your artifacts to a safe location before enabling this feature.
-  //
-  // After you backed up your artifacts you can utilize db by running migrate as follows: 
-  // $ truffle migrate --reset --compile-all
-  //
-  // db: {
-    // enabled: false,
-    // host: "127.0.0.1",
-    // adapter: {
-    //   name: "sqlite",
-    //   settings: {
-    //     directory: ".db"
-    //   }
-    // }
-  // }
+  networks: {
+    development: {
+      host: "127.0.0.1",
+     port: 8545,
+     network_id: "*",
+     mnemonic: ""
+   },
+   ropsten: {
+      network_id: "3",
+      host: "https://mainnet.infura.io/v3/dd3960c95b9046d796f033ac2ff157be",
+      provider: () =>
+      new HDWalletProvider(mnemonic, "https://ropsten.infura.io/"),
+   },
+   test: {
+     host: "127.0.0.1",
+     port: 8545,
+     network_id: "*"
+   }
+  },
+ 
+    solc: {
+      version: "^0.5.0"
+
+    }
 };
